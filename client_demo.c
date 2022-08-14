@@ -8,7 +8,7 @@
 
 int main(int argc, char **argv)
 {
-    int server;
+    int service;
     int socket_fd = socket(AF_INET, SOCK_STREAM, 0);
 
     struct addrinfo hints, *result;
@@ -16,10 +16,10 @@ int main(int argc, char **argv)
     hints.ai_family = AF_INET;
     hints.ai_socktype = SOCK_STREAM;
 
-    server = getaddrinfo("www.google.com", "80", &hints, &result);
-    if (server != 0)
+    service = getaddrinfo("localhost", "1234", &hints, &result);
+    if (service != 0)
     {
-        fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(server));
+        fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(service));
         exit(1);
     }
 
